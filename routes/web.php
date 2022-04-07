@@ -1,0 +1,25 @@
+<?php
+
+use App\Http\Controllers\NoteController;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+  return view('welcome');
+});
+
+Route::get('/create-note', [NoteController::class, 'create']);
+Route::get('/create-note/progress', [NoteController::class, 'progress'])->name(
+  'batch-progress'
+);
+Route::get('/create-note/cancel/{id}', [NoteController::class, 'cancel']);
