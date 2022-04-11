@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\BatchJobAction2;
 use App\Actions\JobBatchAction;
 use App\Jobs\StoreNote;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ class NoteController extends Controller
 {
   public function create()
   {
-    $batch = JobBatchAction::pushJobsToBatch([
+    $batch = BatchJobAction2::pushJobsToBatch([
       new StoreNote(),
       new StoreNote(),
       new StoreNote(),

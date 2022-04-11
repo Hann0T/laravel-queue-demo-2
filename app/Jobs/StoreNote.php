@@ -41,33 +41,19 @@ class StoreNote implements ShouldQueue
       return;
     }
 
-    $error = false;
+    // DB::transaction(function () {
+    // ignore
+    // $randNumber = rand(1, 5);
 
-    try {
-      DB::beginTransaction();
+    // if ($randNumber == 1) {
+    //   throw new Exception('An Error occurred, the number is equal to 1');
+    // }
+    // end-ignore
 
-      // ignore
-      $randNumber = rand(1, 5);
+    sleep(2);
 
-      if ($randNumber == 1) {
-        throw new Exception('An Error occurred, the number is equal to 1');
-      }
-      // end-ignore
-
-      sleep(2);
-
-      Note::factory(1)->create();
-    } catch (Throwable $e) {
-      $error = true;
-
-      DB::rollBack();
-
-      $this->fail($e);
-    }
-
-    if (!$error) {
-      DB::commit();
-    }
+    Note::factory(1)->create();
+    // });
   }
 
   /**
