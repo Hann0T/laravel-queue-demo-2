@@ -2,10 +2,6 @@
 
 namespace App\Providers;
 
-// use Illuminate\Queue\Events\JobProcessed;
-// use Illuminate\Queue\Events\JobProcessing;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -32,17 +28,14 @@ class AppServiceProvider extends ServiceProvider
     //   info($event->job->payload());
     // });
 
-    // Queue::looping(function () {
-    //   info('first transaction level: ' . DB::transactionLevel());
-    //   while (DB::transactionLevel() > 0) {
-    //     info('transaction level: ' . DB::transactionLevel());
-    //     DB::rollBack();
-    //   }
-    // });
-
     // Queue::after(function (JobProcessed $event) {
     //   info('after queue');
     //   info($event->job->payload());
+    // });
+
+    // Queue::failing(function (JobFailed $event) {
+    //   info($event->job->getJobId());
+    //   info($event->job->attempts());
     // });
   }
 }
